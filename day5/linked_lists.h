@@ -1,7 +1,10 @@
 #ifndef LL_ALT_H
 #define LL_ALT_H
 
-#include "common.h"
+// #include "common.h"
+#include<string.h>
+#include<common.h>
+#include<stdlib.h>
 #include <assert.h>
 
 typedef int DATA;

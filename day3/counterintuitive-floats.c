@@ -22,7 +22,7 @@ main(int ac, char **av)
     /* Adding 1 to a large floating point number has no effect */
     printf("%e %e\n", FLT_MIN, FLT_MAX);
     saved_f = f = FLT_MAX/1e20; /* AT WHAT VALUE DOES THIS START HAPPENING? */
-    for (i = 0; i < 10'000'000; i++) {
+    for (i = 0; i < 10000000; i++) {
         f += 1.0;
         if (saved_f == f) {
             printf("At f=%20f (%e), adding 1 has no effect\n", f, f);
