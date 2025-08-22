@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-
-#define SIZE 1024
+#include "header.h"
 
 // RLE encode function
 void encode(const char *in, char *out, char *maxCh, int *maxCt) {
@@ -14,7 +9,7 @@ void encode(const char *in, char *out, char *maxCh, int *maxCt) {
         curr = in[i];
         cnt = 1;
 
-        while (in[i + 1] == curr) {
+        while (in[i + 1] && in[i + 1] == curr) {
             cnt++;
             i++;
         }
@@ -33,7 +28,7 @@ void encode(const char *in, char *out, char *maxCh, int *maxCt) {
         i++;
     }
 
-    out[k] = '\0';//str ends with null
+    out[k] = '\0';
     *maxCt = best;
 }
 
@@ -50,36 +45,10 @@ void decode(const char *in, char *out) {
 
         if (cnt == 0) cnt = 1;
 
-        for (int j = 0; j < cnt; j++) {
+        for (int j = 0; j < cnt && k < SIZE - 1; j++) {
             out[k++] = ch;
         }
     }
 
     out[k] = '\0';
-}
-
-int main() {
-    char input[SIZE], encoded[SIZE], decoded[SIZE];
-    char mostCh;
-    int maxCt;
-
-    printf("Input string: ");
-    if (fgets(input, SIZE, stdin) == NULL) {
-        printf("Error reading input.\n");
-        return 1;
-    }
-
-    // remove newline if exists
-    input[strcspn(input, "\n")] = '\0';
-
-    // Encoding
-    encode(input, encoded, &mostCh, &maxCt);
-    printf("Encoded: %s\n", encoded);
-    printf("Max repeated char: %c\n", mostCh);
-
-    // Decoding
-    decode(encoded, decoded);
-    printf("Decoded: %s\n", decoded);
-
-    return 0;
 }

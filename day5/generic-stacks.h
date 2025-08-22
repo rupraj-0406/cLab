@@ -1,5 +1,6 @@
 #ifndef _GSTACK_
 #define _GSTACK_
+#include <stddef.h>
 
 typedef struct {
     void *elements;
