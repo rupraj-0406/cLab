@@ -1,0 +1,12 @@
+insert 10
+getMedian
+insert 20
+getMedian
+insert 5
+getMedian
+insert 15
+getMedian
+insert 25
+insert 30
+insert 40
+getMedian
